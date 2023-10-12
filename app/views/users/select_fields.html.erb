@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultados da Pesquisa</title>
+</head>
+<body>
+  <h1>Resultados da Pesquisa</h1>
+
+  <% if @users.any? %>
+    <% @users.each do |user| %>
+      <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+        <strong>Nome:</strong> <%= user.name %><br>
+        <strong>Email:</strong> <%= user.email %><br>
+        <strong>Celular:</strong> <%= user.phone %><br>
+        <strong>CPF:</strong> <%= user.cpf %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Nenhum resultado encontrado.</p>
+  <% end %>
+
+  <br>
+
+  <div>
+    <%= link_to "Voltar para usuários", users_path %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultados da Pesquisa</title>
+</head>
+<body>
+  <h1>Resultados da Pesquisa</h1>
+
+  <% if @users.any? %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <strong>Nome:</strong> <%= @users.first.name %><br>
+      <strong>Email:</strong> <%= @users.first.email %><br>
+      <strong>Celular:</strong> <%= @users.first.phone %><br>
+      <strong>CPF:</strong> <%= @users.first.cpf %>
+    </div>
+  <% else %>
+    <p>Nenhum resultado encontrado para a pesquisa.</p>
+  <% end %>
+
+  <br>
+
+  <div>
+    <%= link_to "Voltar para usuários", users_path %>
+  </div>
+</body>
+</html>
+
