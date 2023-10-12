@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def pesquisar
-    redirect_to resultados_pesquisa_path
+    redirect_to select_fields_path
   end  
 
   def resultados_pesquisa
