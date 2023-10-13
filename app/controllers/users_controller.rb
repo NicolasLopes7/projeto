@@ -45,8 +45,7 @@ class UsersController < ApplicationController
       elsif criteria == 'name'
         @users = User.where(name: query)
       elsif criteria == 'cpf'
-        cleaned_query = query.gsub(/[.-]/, '')
-        @users = User.where(cpf: cleaned_query)
+        @users = User.where(cpf: query)
       elsif criteria == 'phone'
         @users = User.where(phone: query)
       else
