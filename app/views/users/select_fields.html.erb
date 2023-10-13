@@ -6,7 +6,13 @@
 <body>
   <h1>Resultados da Pesquisa</h1>
 
-  <% if @users.any? %>
+  <% flash.each do |type, msg| %>
+    <div style="<%= type == 'alert' ? 'color: red;' : '' %>">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <% if @users&.any? %>
     <% @users.each do |user| %>
       <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
         <strong>Nome:</strong> <%= user.name %><br>

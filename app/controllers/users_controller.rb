@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def resultados_pesquisa
     criteria = params[:criteria]
     query = params[:query]
-  
+
     if query.present?
       if criteria == 'email'
         @users = User.where(email: query)
@@ -50,16 +50,14 @@ class UsersController < ApplicationController
       elsif criteria == 'phone'
         @users = User.where(phone: query)
       else
-        redirect_to resultados_pesquisa_path, alert: 'Critério de pesquisa inválido ou vazio.'
-        return
+        flash.now[:alert] = "Critério de pesquisa inválido ou vazio."
       end
     else
-      redirect_to resultados_pesquisa_path, alert: 'Por favor, insira uma consulta para pesquisar.'
-      return
+      flash.now[:alert] = "Por favor, insira uma consulta para pesquisar."
     end
     return render 'select_fields'
   end
-  
+
 def select_fields
   @users = User.select(:name, :email, :phone, :cpf)
   render 'select_fields'
