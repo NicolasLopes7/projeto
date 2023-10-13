@@ -34,10 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def pesquisar
-    redirect_to select_fields_path
-  end  
-
+  # /resultados_pesquisa
   def resultados_pesquisa
     criteria = params[:criteria]
     query = params[:query]
@@ -53,13 +50,14 @@ class UsersController < ApplicationController
       elsif criteria == 'phone'
         @users = User.where(phone: query)
       else
-        redirect_to pesquisar_usuarios_path, alert: 'Critério de pesquisa inválido ou vazio.'
+        redirect_to resultados_pesquisa_path, alert: 'Critério de pesquisa inválido ou vazio.'
         return
       end
     else
-      redirect_to pesquisar_usuarios_path, alert: 'Por favor, insira uma consulta para pesquisar.'
+      redirect_to resultados_pesquisa_path, alert: 'Por favor, insira uma consulta para pesquisar.'
       return
     end
+    return render 'select_fields'
   end
   
 def select_fields
